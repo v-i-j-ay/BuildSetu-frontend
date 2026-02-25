@@ -14,21 +14,28 @@ import Contact from "./pages/Contact";
 import AuthPage from "./components/Authpage";
 
 
+import ProtectedRoute from "./components/ProtectedRoute"; //verify pages
+import { AuthProvider } from "./context/AuthContext";     //global data
+
+
 function App() {
   return (
     <>
+    <AuthProvider>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/labours" element={<Labours/>}/>
-        <Route path="/contractors" element={<Contractors/>}/>
-        <Route path="/suppliers" element={<Suppliers/>}/>
+          {/* 🔒 PROTECTED ROUTES */}
+        <Route path="/labours" element={<ProtectedRoute><Labours/></ProtectedRoute>}/>
+        <Route path="/contractors" element={ <ProtectedRoute><Contractors/></ProtectedRoute>}/>
+        <Route path="/suppliers" element={<ProtectedRoute><Suppliers/></ProtectedRoute>}/>
         <Route path="/about" element={<About/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-       {/* SINGLE AUTH ROUTE */}
+        <Route path="/contact" element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
+
         <Route path="/login" element={<AuthPage />} />
       </Routes>
       <Footer/>
+      </AuthProvider>
     </>
   );
 }
