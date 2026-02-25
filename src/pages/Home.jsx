@@ -6,7 +6,7 @@ import pp from "../photos/pp.jpg"
 import ver from "../photos/ver.png"
 import qu from "../photos/qu.png"
 import cs from "../photos/cs.jpg"
-
+import { Link } from "react-router-dom";
 
 
 
@@ -39,12 +39,12 @@ const Home = () => {
           </p>
 
           <div className="mt-6 flex gap-4">
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+            <Link to="/labours"><button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
               Hire Labour
-            </button>
-            <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">
+            </button></Link>
+            <Link to="contractors" ><button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">
               Find Contractor
-            </button>
+            </button></Link> 
           </div>
         </div>
 

@@ -31,7 +31,7 @@ const Navbar = () => {
               <NavLink to="/" className={linkClass}>Home</NavLink>
               <NavLink to="/labours" className={linkClass}>Labours</NavLink>
               <NavLink to="/contractors" className={linkClass}>Contractors</NavLink>
-              <NavLink to="/suppliers" className={linkClass}>Suppliers</NavLink>
+              <NavLink to="/suppliers" className={linkClass}>Materials</NavLink>
               <NavLink to="/about" className={linkClass}>About</NavLink>
               <NavLink to="/contact" className={linkClass}>Need help?</NavLink>
               <NavLink to="/login" className="flex items-center">
@@ -94,7 +94,7 @@ const Navbar = () => {
             Contractors
           </NavLink>
           <NavLink to="/suppliers" className={linkClass} onClick={() => setOpen(false)}>
-            Suppliers
+            Materials
           </NavLink>
           <NavLink to="/about" className={linkClass} onClick={() => setOpen(false)}>
             About
