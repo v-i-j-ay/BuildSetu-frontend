@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AuthPage from "./components/Authpage";
 
+import ScrollToTop from "./components/ScrollToTop";
 
 import ProtectedRoute from "./components/ProtectedRoute"; //verify pages
 import { AuthProvider } from "./context/AuthContext";     //global data
@@ -23,6 +24,7 @@ function App() {
     <>
     <AuthProvider>
       <Navbar/>
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home/>}/>
           {/* 🔒 PROTECTED ROUTES */}
