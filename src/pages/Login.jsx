@@ -3,12 +3,12 @@ import bs from "../photos/bs.jpeg";
 import go from "../photos/go.jpg";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
-
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-
+const navigate = useNavigate();
   async function signIn(){
     await signInWithPopup(auth, googleProvider);
-    
+    navigate("/");
   }
 
   return (

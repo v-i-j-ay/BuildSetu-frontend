@@ -12,6 +12,7 @@ const AuthPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+          // onAuthStateChanged listens for login/logout changes
     const unsub = onAuthStateChanged(auth, (currentUser) => {
       setLocalUser(currentUser); // local UI
       setUser(currentUser);      // global auth state
@@ -29,7 +30,7 @@ const AuthPage = () => {
     );
   }
 
-  return user ? <Profile user={user} /> : <Login />;
+  return user ? <Profile user={user} /> : <Login />; //Login page switches to Profile after login
 };
 
 export default AuthPage;
