@@ -34,8 +34,8 @@ const Home = () => {
             BuildSetu
           </h1>
           <p className="text-gray-600 mt-4 text-lg">
-            One platform to hire skilled labours, trusted contractors, 
-            and reliable suppliers for construction, repair & cleaning work.
+           One platform connecting you with skilled workers, verified contractors, and reliable construction materials for construction, repair, cleaning, and other essential services — all in one place.
+
           </p>
 
           <div className="mt-6 flex gap-4">
