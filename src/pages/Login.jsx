@@ -4,12 +4,20 @@ import go from "../photos/go.jpg";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 const Login = () => {
 const navigate = useNavigate();
-  async function signIn(){
+  async function signIn() {
+  try {
     await signInWithPopup(auth, googleProvider);
-    navigate("/");
+
+    toast.success("Login successful 🚀");
+
+    navigate("/profile");
+  } catch (error) {
+    toast.error("Login failed");
   }
+}
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">

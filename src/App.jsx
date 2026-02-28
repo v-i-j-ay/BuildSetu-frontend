@@ -12,11 +12,14 @@ import Suppliers from "./pages/Suppliers";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AuthPage from "./components/Authpage";
+import Profile from "./pages/Profile";
 
 import ScrollToTop from "./components/ScrollToTop";
 
 import ProtectedRoute from "./components/ProtectedRoute"; //verify pages
 import { AuthProvider } from "./context/AuthContext";     //global data
+
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
@@ -25,6 +28,7 @@ function App() {
     <AuthProvider>
       <Navbar/>
       <ScrollToTop/>
+      <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Home/>}/>
           {/* 🔒 PROTECTED ROUTES */}
@@ -33,6 +37,9 @@ function App() {
         <Route path="/suppliers" element={<ProtectedRoute><Suppliers/></ProtectedRoute>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
+           <Route path="/profile" element={ <ProtectedRoute>  <Profile /></ProtectedRoute> }/>
+        
+        
 
         <Route path="/login" element={<AuthPage />} />
       </Routes>

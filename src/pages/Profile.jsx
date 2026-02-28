@@ -1,22 +1,41 @@
 import React from "react";
 import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
+import { useAuth } from "../context/AuthContext";
+import toast from "react-hot-toast";
 
-const Profile = ({ user }) => {
-  async function logout() {
+const Profile = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+ async function logout() {
+  try {
     await signOut(auth);
+
+    toast.success("Logged out successfully 👋");
+
+    navigate("/login");
+  } catch (error) {
+    toast.error("Logout failed");
+  }
+}
+
+  // Safety check (shouldn't happen if ProtectedRoute works)
+  if (!user) {
+    return null;
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br  from-blue-50 to-gray-100 flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-gray-100 flex flex-col items-center justify-center px-4">
       
       {/* Heading */}
       <h1 className="text-4xl font-bold text-gray-800 border-b-4 border-blue-600 pb-2">
-    Profile Page 
-  </h1>
+        Profile Page
+      </h1>
 
       {/* Profile Card */}
-      <div className="w-full max-w-md mt-5 bg-white rounded-3xl p-10 text-center shadow-2xl border-2   hover:shadow-blue-200 transition duration-300">
+      <div className="w-full max-w-md mt-6 bg-white rounded-3xl p-10 text-center shadow-2xl border-2 hover:shadow-blue-200 transition duration-300">
         
         <img
           src={user.photoURL}
