@@ -43,9 +43,7 @@ const Contractors = () => {
            <button className="bg-white text-gray-800 font-semibold px-8 py-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all">
              Register as Contractor
            </button>
-           <button className="bg-gray-700 text-white font-semibold px-8 py-3 rounded-xl shadow-md hover:bg-gray-800 hover:scale-105 transition-all">
-             Manage Your Profile
-           </button>
+           
          </div>
 
        </div>

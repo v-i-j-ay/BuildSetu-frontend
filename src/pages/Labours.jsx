@@ -47,9 +47,7 @@ const Labours = () => {
               Register as Labour
             </button>
 
-            <button className="bg-gray-700 text-white font-semibold px-8 py-3 rounded-xl shadow-md hover:bg-gray-800 hover:scale-105 transition-all">
-              Edit Your Profile
-            </button>
+            
           </div>
         </div>
       </div>
