@@ -1,5 +1,7 @@
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ContractorRegister from "./ContractorRegister";
 
 const constructionContractors = [
   { name: "Building Contractor", icon: "🏗️", color: "bg-orange-200" },
@@ -17,6 +19,7 @@ const otherContractors = [
 
 const Contractors = () => {
   const [search, setSearch] = useState("");
+   const navigate = useNavigate();
 
   const filteredConstruction = constructionContractors.filter((cat) =>
     cat.name.toLowerCase().includes(search.toLowerCase())
@@ -40,7 +43,7 @@ const Contractors = () => {
            and build faster with confidence.”
          </p>
          <div className="flex flex-col sm:flex-row justify-center gap-4">
-           <button className="bg-white text-gray-800 font-semibold px-8 py-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all">
+           <button  onClick={() => navigate("/contractor/register")} className="bg-white text-gray-800 font-semibold px-8 py-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all">
              Register as Contractor
            </button>
            

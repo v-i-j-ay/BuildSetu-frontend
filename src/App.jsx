@@ -7,7 +7,9 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import Labours from "./pages/Labours";
+import LabourRegister from "./pages/LabourRegister";
 import Contractors from "./pages/Contractors";
+import ContractorRegister from "./pages/ContractorRegister";
 import Suppliers from "./pages/Suppliers";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -22,6 +24,7 @@ import { AuthProvider } from "./context/AuthContext";     //global data
 import { Toaster } from "react-hot-toast";
 
 
+
 function App() {
   return (
     <>
@@ -34,6 +37,8 @@ function App() {
           {/* 🔒 PROTECTED ROUTES */}
         <Route path="/labours" element={<ProtectedRoute><Labours/></ProtectedRoute>}/>
         <Route path="/contractors" element={ <ProtectedRoute><Contractors/></ProtectedRoute>}/>
+        <Route path="/labours/register" element={<LabourRegister />} />
+         <Route path="/contractor/register" element={<ContractorRegister />} />
         <Route path="/suppliers" element={<ProtectedRoute><Suppliers/></ProtectedRoute>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
