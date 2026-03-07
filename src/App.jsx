@@ -21,6 +21,9 @@ import ScrollToTop from "./components/ScrollToTop";
 import ProtectedRoute from "./components/ProtectedRoute"; //verify pages
 import { AuthProvider } from "./context/AuthContext";     //global data
 
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
+
 import { Toaster } from "react-hot-toast";
 
 
@@ -42,7 +45,14 @@ function App() {
         <Route path="/suppliers" element={<ProtectedRoute><Suppliers/></ProtectedRoute>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
-           <Route path="/profile" element={ <ProtectedRoute>  <Profile /></ProtectedRoute> }/>
+        <Route path="/profile" element={ <ProtectedRoute>  <Profile /></ProtectedRoute> }/>
+        <Route path="/admin"
+            element={
+              <AdminRoute>
+                  <AdminDashboard />
+               </AdminRoute>
+              }
+        />
         
         
 
