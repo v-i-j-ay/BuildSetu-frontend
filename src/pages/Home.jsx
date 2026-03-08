@@ -119,9 +119,9 @@ const Home = () => {
     Masons, Electricians, Plumbers, Painters & more
   </p>
   {/* Right corner small action */}
-  <button className="absolute bottom-4 right-4 text-sm font-semibold text-blue-700 hover:text-blue-900 transition">
+  <Link to="/labours"><button className="absolute bottom-4 right-4 text-sm font-semibold text-blue-700 hover:text-blue-900 transition">
     Explore →
-  </button>
+  </button></Link>
 </div>
 
 
@@ -130,20 +130,20 @@ const Home = () => {
   <p className="text-gray-600 mt-2">
     Manage full construction or specific works
   </p>
-  <button className="absolute bottom-4 right-4 text-sm font-semibold text-green-700 hover:text-green-900 transition">
+  <Link to="/contractors" ><button className="absolute bottom-4 right-4 text-sm font-semibold text-green-700 hover:text-green-900 transition">
     Explore →
-  </button>
+  </button></Link>
 </div>
 
 
 <div className="bg-violet-300 p-6 rounded-xl shadow hover:shadow-lg transition relative">
-  <h3 className="text-xl font-semibold">Suppliers</h3>
+  <h3 className="text-xl font-semibold">Materials</h3>
   <p className="text-gray-600 mt-2">
     Cement, electrical, plumbing & building materials
   </p>
-  <button className="absolute bottom-4 right-4 text-sm font-semibold text-violet-700 hover:text-violet-900 transition">
+  <Link to="/suppliers"><button className="absolute bottom-4 right-4 text-sm font-semibold text-violet-700 hover:text-violet-900 transition">
     Explore →
-  </button>
+  </button></Link>
 </div>
 
     </div>
@@ -206,14 +206,14 @@ const Home = () => {
 
 <section className="py-16 text-center">
   <h2 className="text-3xl font-bold text-gray-800">
-    Are you a Labour, Contractor or Supplier?
+    Are you a Labour Or Contractor?
   </h2>
   <p className="text-gray-600 mt-2">
     Register with BuildSetu and start getting work today
   </p>
 
   <button className="mt-6 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700">
-    Register Now
+    <Link to="/login">Register Now</Link>
   </button>
 </section>
   
