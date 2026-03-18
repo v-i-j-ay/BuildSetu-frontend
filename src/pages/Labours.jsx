@@ -81,6 +81,7 @@ const Labours = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center">
             {filteredConstruction.map((cat, index) => (
                <div key={index}
+                  onClick={() => navigate(`/labours/category/${cat.name}`)}
                   className={`${cat.color}  w-[90%] sm:w-full max-w-xs sm:max-w-sm rounded-2xl p-10 shadow-xl hover:shadow-xl 
                            hover:-translate-y-1 transition-all cursor-pointer text-center`}>
                 <div className="text-4xl mb-4">{cat.icon}</div>
@@ -110,6 +111,7 @@ const Labours = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center">
             {filteredOther.map((cat, index) => (
               <div key={index}
+                   onClick={() => navigate(`/labours/category/${cat.name}`)}
                   className={`${cat.color}  w-[90%] sm:w-full max-w-xs sm:max-w-sm rounded-2xl p-10 shadow-xl hover:shadow-xl 
                            hover:-translate-y-1 transition-all cursor-pointer text-center`}>
                 <div className="text-4xl mb-4">{cat.icon}</div>

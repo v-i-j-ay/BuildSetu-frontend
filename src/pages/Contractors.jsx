@@ -78,6 +78,7 @@ const Contractors = () => {
             {filteredConstruction.map((cat, index) => (
               <div
                 key={index}
+                onClick={() => navigate(`/contractors/category/${cat.name}`)}
                 className={`${cat.color} w-[90%] sm:w-full max-w-xs sm:max-w-sm rounded-2xl p-10 shadow-xl hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer text-center`}
               >
                 <div className="text-4xl mb-4">{cat.icon}</div>
@@ -108,6 +109,7 @@ const Contractors = () => {
             {filteredOther.map((cat, index) => (
               <div
                 key={index}
+                onClick={() => navigate(`/contractors/category/${cat.name}`)}
                 className={`${cat.color} w-[90%] sm:w-full max-w-xs sm:max-w-sm rounded-2xl p-10 shadow-xl hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer text-center`}
               >
                 <div className="text-4xl mb-4">{cat.icon}</div>

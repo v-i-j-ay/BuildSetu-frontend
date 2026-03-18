@@ -11,6 +11,9 @@ import LabourRegister from "./pages/LabourRegister";
 import Contractors from "./pages/Contractors";
 import ContractorRegister from "./pages/ContractorRegister";
 import Suppliers from "./pages/Suppliers";
+import Cart from "./pages/Cart";
+import Ordersuccess from "./pages/Ordersucess";
+import Checkout from "./pages/Checkout";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AuthPage from "./components/Authpage";
@@ -24,7 +27,12 @@ import { AuthProvider } from "./context/AuthContext";     //global data
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminRoute from "./components/AdminRoute";
 
+import LabourCategory from "./pages/LabourCategory";
+import ContractorCategory from "./pages/ContractorCategory";
+
 import { Toaster } from "react-hot-toast";
+
+
 
 
 
@@ -37,12 +45,15 @@ function App() {
       <Toaster position="top-right" />
       <Routes>
         <Route path="/" element={<Home/>}/>
-          {/* 🔒 PROTECTED ROUTES */}
+          {/*  PROTECTED ROUTES */}
         <Route path="/labours" element={<ProtectedRoute><Labours/></ProtectedRoute>}/>
         <Route path="/contractors" element={ <ProtectedRoute><Contractors/></ProtectedRoute>}/>
         <Route path="/labours/register" element={<LabourRegister />} />
          <Route path="/contractor/register" element={<ContractorRegister />} />
         <Route path="/suppliers" element={<ProtectedRoute><Suppliers/></ProtectedRoute>}/>
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/success" element={<Ordersuccess/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<ProtectedRoute><Contact/></ProtectedRoute>}/>
         <Route path="/profile" element={ <ProtectedRoute>  <Profile /></ProtectedRoute> }/>
@@ -54,7 +65,8 @@ function App() {
               }
         />
         
-        
+        <Route path="/labours/category/:category" element={<LabourCategory />} />
+         <Route path="/contractors/category/:category" element={<ContractorCategory />} />
 
         <Route path="/login" element={<AuthPage />} />
       </Routes>

@@ -1,5 +1,7 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const constructionCategories = [
   "Construction Labour",
@@ -19,9 +21,11 @@ const otherCategories = [
 ];
 
 const LabourRegister = () => {
-  const navigate = useNavigate(); // ✅ added
+
+  const navigate = useNavigate();
 
   const [preview, setPreview] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -33,47 +37,145 @@ const LabourRegister = () => {
     profile: null,
   });
 
+
   const handleChange = (e) => {
+
     const { name, value, files } = e.target;
 
     if (name === "profile") {
-      setFormData({ ...formData, profile: files[0] });
-    } else {
-      setFormData({ ...formData, [name]: value });
+
+      const file = files[0];
+
+      if (file) {
+        setPreview(URL.createObjectURL(file));
+      }
+
+      setFormData({
+        ...formData,
+        profile: file,
+      });
+
     }
+
+    else if (name === "phone") {
+
+      // allow only numbers and max 10 digits
+      const phoneValue = value.replace(/\D/g, "").slice(0, 10);
+
+      setFormData({
+        ...formData,
+        phone: phoneValue,
+      });
+
+    }
+
+    else {
+
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+
+    }
+
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
 
-    if (!formData.name || !formData.phone || !formData.email) {
-      alert("Please fill all required fields");
+    // NAME VALIDATION
+    if (!formData.name.trim()) {
+      alert("Name is required");
       return;
     }
 
-    alert("Registration Successful! Waiting for Admin Approval");
+    // PHONE VALIDATION
+    const phoneRegex = /^[0-9]{10}$/;
 
-    // Reset form
-    setPreview(null);
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      category: "",
-      experience: "",
-      location: "",
-      profile: null,
-    });
+    if (!phoneRegex.test(formData.phone)) {
+      alert("Phone number must be exactly 10 digits");
+      return;
+    }
 
-    // ✅ Go back to labour page
-    navigate("/labours");
+    // EMAIL VALIDATION
+    if (!formData.email.trim()) {
+      alert("Email is required");
+      return;
+    }
+
+    // CATEGORY VALIDATION
+    if (!formData.category) {
+      alert("Please select a category");
+      return;
+    }
+
+    // PHOTO VALIDATION
+    if (!formData.profile) {
+      alert("Profile photo is required");
+      return;
+    }
+
+    try {
+
+      setLoading(true);
+
+      const data = new FormData();
+
+      data.append("name", formData.name);
+      data.append("phone", formData.phone);
+      data.append("email", formData.email);
+      data.append("category", formData.category);
+      data.append("experience", formData.experience);
+      data.append("location", formData.location);
+      data.append("profile", formData.profile);
+
+      await axios.post(
+        "http://localhost:5000/api/labours/register",
+        data
+      );
+
+      alert("Registration Successful! Waiting for Admin Approval");
+
+      setPreview(null);
+
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        category: "",
+        experience: "",
+        location: "",
+        profile: null,
+      });
+
+      navigate("/labours");
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+      alert("Registration failed");
+
+    }
+
+    finally {
+
+      setLoading(false);
+
+    }
+
   };
 
+
   return (
+
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
+
       <div className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl p-6 sm:p-10 relative">
 
-        {/* ✅ Close Button (same UI style, no design change) */}
         <button
           onClick={() => navigate("/labours")}
           className="absolute top-6 right-6 text-gray-400 hover:text-black text-xl"
@@ -91,15 +193,15 @@ const LabourRegister = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6">
 
-          {/* Personal Info */}
           <div className="grid sm:grid-cols-2 gap-4">
+
             <input
               type="text"
               name="name"
               placeholder="Full Name *"
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+              className="w-full px-4 py-3 rounded-xl border"
             />
 
             <input
@@ -108,8 +210,9 @@ const LabourRegister = () => {
               placeholder="Phone Number *"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+              className="w-full px-4 py-3 rounded-xl border"
             />
+
           </div>
 
           <input
@@ -118,18 +221,19 @@ const LabourRegister = () => {
             placeholder="Email *"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+            className="w-full px-4 py-3 rounded-xl border"
           />
 
-          {/* Work Info */}
           <div className="grid sm:grid-cols-2 gap-4">
+
             <select
               name="category"
               value={formData.category}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+              className="w-full px-4 py-3 rounded-xl border"
             >
               <option value="">Select Category</option>
+
               {[...constructionCategories, ...otherCategories].map(
                 (cat, index) => (
                   <option key={index} value={cat}>
@@ -137,6 +241,7 @@ const LabourRegister = () => {
                   </option>
                 )
               )}
+
             </select>
 
             <input
@@ -145,8 +250,9 @@ const LabourRegister = () => {
               placeholder="Experience (Years)"
               value={formData.experience}
               onChange={handleChange}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+              className="w-full px-4 py-3 rounded-xl border"
             />
+
           </div>
 
           <input
@@ -155,59 +261,57 @@ const LabourRegister = () => {
             placeholder="Location"
             value={formData.location}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+            className="w-full px-4 py-3 rounded-xl border"
           />
 
-          {/* Profile Upload */}
-          <div>
-            <label className="text-sm font-medium text-gray-600 block mb-2">
-              Profile Photo
-            </label>
+          <label className="w-full flex flex-col items-center justify-center px-6 py-8 border-2 border-dashed rounded-2xl cursor-pointer">
 
-            <label className="w-full flex flex-col items-center justify-center px-6 py-8 border-2 border-dashed border-gray-300 rounded-2xl cursor-pointer hover:border-yellow-400 hover:bg-yellow-50 transition duration-300">
-
-              {preview ? (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="w-24 h-24 rounded-full object-cover mb-3 shadow-md"
-                />
-              ) : (
-                <div className="flex flex-col items-center text-gray-400">
-                  <span className="text-4xl mb-2">📷</span>
-                  <p className="text-sm">Click to upload photo</p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    JPG, PNG (Max 5MB)
-                  </p>
-                </div>
-              )}
-
-              <input
-                type="file"
-                name="profile"
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => {
-                  handleChange(e);
-                  const file = e.target.files[0];
-                  if (file) {
-                    setPreview(URL.createObjectURL(file));
-                  }
-                }}
+            {preview ? (
+              <img
+                src={preview}
+                alt="Preview"
+                className="w-24 h-24 rounded-full object-cover"
               />
-            </label>
-          </div>
+            ) : (
+              <p>Click to upload photo *</p>
+            )}
+
+            <input
+              type="file"
+              name="profile"
+              accept="image/*"
+              className="hidden"
+              onChange={handleChange}
+            />
+
+          </label>
 
           <button
             type="submit"
-            className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:opacity-90 transition duration-300"
+            disabled={loading}
+            className="w-full bg-black text-white py-3 rounded-xl flex items-center justify-center gap-2"
           >
-            Submit Registration
+
+            {loading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
+                Processing...
+              </>
+            ) : (
+              "Submit Registration"
+            )}
+
           </button>
+
         </form>
+
       </div>
+
     </div>
+
   );
+
 };
 
 export default LabourRegister;
+
