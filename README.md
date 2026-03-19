@@ -1,16 +1,43 @@
-# React + Vite
+# BuildSetu – Labour Hiring Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BuildSetu is a full-stack web platform that connects skilled labourers and contractors through a verified hiring system.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Labour & Contractor Registration
+- Admin Approval Workflow
+- Profile Verification System
+- Category-Based Worker Filtering
+- Real Profile Image Upload (Multer)
+- Email Notification System
+- WhatsApp Hiring Integration
+- Protected Admin Dashboard
+- Responsive UI
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Frontend:
+- React
+- Tailwind CSS
+- Axios
+- Firebase Authentication
 
-## Expanding the ESLint configuration
+Backend:
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Multer
+- Nodemailer
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Problem Solved
+
+This platform addresses the difficulty of discovering verified skilled labour in local markets by providing a centralized digital hiring solution.
+
+## Future Improvements
+
+- Ratings & Reviews System
+- Booking Management
+- Payment Integration
+- Location-Based Filtering
+- Real-Time Chat System
