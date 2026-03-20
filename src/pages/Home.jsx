@@ -219,18 +219,15 @@ const Home = () => {
   
   {/* SUPPLIER OFFERS MARQUEE */}
 <section className="bg-blue-50 py-4 overflow-hidden">
-  <div className="relative">
-    <div className="flex  text-lg font-medium text-green-600">
-      <marquee ><span>🔥 Cement 10% OFF</span>
-      <span>⚡ Electrical Items Discount</span>
-      <span>🧱 Tiles Special Offer</span>
-      <span>🧹 Cleaning Supplies Deal</span>
-      <span>🚰 Plumbing Materials Sale</span>
-      <span>🪵 Wood & Plywood Offer</span></marquee>
-    </div>
+  <div className="flex justify-center gap-10 text-lg font-medium text-green-600">
+    <span className="hover:scale-110 transition">🔥 Cement 10% OFF</span>
+    <span className="hover:scale-110 transition">⚡ Electrical Items Discount</span>
+    <span className="hover:scale-110 transition">🧱 Tiles Special Offer</span>
+    <span className="hover:scale-110 transition">🧹 Cleaning Supplies Deal</span>
+    <span className="hover:scale-110 transition">🚰 Plumbing Materials Sale</span>
+    <span className="hover:scale-110 transition">🪵 Wood & Plywood Offer</span>
   </div>
 </section>
-
     </div>
     
     
