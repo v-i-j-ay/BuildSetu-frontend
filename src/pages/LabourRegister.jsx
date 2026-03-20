@@ -132,7 +132,7 @@ const LabourRegister = () => {
       data.append("profile", formData.profile);
 
       await axios.post(
-        "http://localhost:5000/api/labours/register",
+        `${import.meta.env.VITE_API_URL}/api/labours/register`,
         data
       );
 

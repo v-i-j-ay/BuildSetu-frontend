@@ -114,7 +114,7 @@ const ContractorRegister = () => {
       data.append("profile", formData.profile);
 
       await axios.post(
-        "http://localhost:5000/api/contractors/register",
+        `${import.meta.env.VITE_API_URL}/api/contractors/register`,
         data
       );
 

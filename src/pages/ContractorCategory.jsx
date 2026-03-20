@@ -16,7 +16,7 @@ function ContractorCategory() {
 
     axios
       
-      .get(`http://localhost:5000/api/contractors/category/${category}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/contractors/category/${category}`)
       .then((res) => {
         setContractors(res.data);
         setLoading(false);
@@ -81,7 +81,7 @@ function ContractorCategory() {
                 <img
                   src={
                     contractor.profile
-                      ? `http://localhost:5000${contractor.profile}`
+                      ? contractor.profile
                       : "https://tse2.mm.bing.net/th/id/OIP.bJpr9jpclIkXQT-hkkb1KQHaHa?pid=Api&P=0&h=180"
                   }
                   alt={contractor.name}

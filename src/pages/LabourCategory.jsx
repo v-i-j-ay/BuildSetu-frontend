@@ -15,7 +15,7 @@ function LabourCategory() {
     setLoading(true);
 
     axios
-      .get(`http://localhost:5000/api/labours/category/${category}`)
+      .get(`${import.meta.env.VITE_API_URL}/api/labours/category/${category}`)
       .then((res) => {
         setLabours(res.data);
         setLoading(false);
@@ -77,7 +77,7 @@ function LabourCategory() {
                 <img
                   src={
                     labour.profile
-                      ? `http://localhost:5000${labour.profile}`
+                      ? labour.profile
                       : "https://tse2.mm.bing.net/th/id/OIP.bJpr9jpclIkXQT-hkkb1KQHaHa?pid=Api&P=0&h=180"
                   }
                   alt={labour.name}
