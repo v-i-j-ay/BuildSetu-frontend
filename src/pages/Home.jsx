@@ -219,14 +219,30 @@ const Home = () => {
   
   {/* SUPPLIER OFFERS MARQUEE */}
 <section className="bg-blue-50 py-4 overflow-hidden">
-  <div className="flex justify-center gap-10 text-lg font-medium text-green-600">
-    <span className="hover:scale-110 transition">🔥 Cement 10% OFF</span>
-    <span className="hover:scale-110 transition">⚡ Electrical Items Discount</span>
-    <span className="hover:scale-110 transition">🧱 Tiles Special Offer</span>
-    <span className="hover:scale-110 transition">🧹 Cleaning Supplies Deal</span>
-    <span className="hover:scale-110 transition">🚰 Plumbing Materials Sale</span>
-    <span className="hover:scale-110 transition">🪵 Wood & Plywood Offer</span>
+  <div className="whitespace-nowrap">
+    <div
+      className="inline-block text-lg font-medium text-green-600"
+      style={{
+        animation: "scroll 35s linear infinite",
+      }}
+    >
+      🔥 Cement 10% OFF &nbsp;&nbsp;&nbsp;
+      ⚡ Electrical Items Discount &nbsp;&nbsp;&nbsp;
+      🧱 Tiles Special Offer &nbsp;&nbsp;&nbsp;
+      🧹 Cleaning Supplies Deal &nbsp;&nbsp;&nbsp;
+      🚰 Plumbing Materials Sale &nbsp;&nbsp;&nbsp;
+      🪵 Wood & Plywood Offer
+    </div>
   </div>
+
+  <style>
+    {`
+      @keyframes scroll {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+    `}
+  </style>
 </section>
     </div>
     
