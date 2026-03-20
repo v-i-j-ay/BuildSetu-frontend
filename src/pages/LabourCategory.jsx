@@ -118,13 +118,13 @@ function LabourCategory() {
                 {/* WHATSAPP BUTTON */}
 
                 <button
-                  onClick={() => {
-                    if (!isValidPhone(labour.phone)) {
-                      alert("Invalid phone number");
-                      return;
-                    }
-                    window.open(
-                      `https://wa.me/91${labour.phone}?text=Hello ${labour.name},
+  onClick={() => {
+    if (!isValidPhone(labour.phone)) {
+      alert("Invalid phone number");
+      return;
+    }
+
+    const message = `Hello ${labour.name},
 
 I found your profile on BuildSetu and was impressed by your experience in ${labour.category}.
 
@@ -141,14 +141,17 @@ We can discuss further details based on your response.
 
 Looking forward to hearing from you.
 
-Thank you.`,
-                      "_blank",
-                    );
-                  }}
-                  className="flex-1 bg-green-500 text-white py-3 rounded-xl font-semibold"
-                >
-                  WhatsApp
-                </button>
+Thank you.`;
+
+    window.open(
+      `https://wa.me/91${labour.phone}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  }}
+  className="flex-1 bg-green-500 text-white py-3 rounded-xl font-semibold"
+>
+  WhatsApp
+</button>
               </div>
             </div>
           ))}
