@@ -135,20 +135,40 @@ function ContractorCategory() {
 
                 {/* WHATSAPP */}
                 <button
-                  onClick={() => {
-                    if (!isValidPhone(contractor.phone)) {
-                      alert("Invalid phone number");
-                      return;
-                    }
-                    window.open(
-                      `https://wa.me/91${contractor.phone}?text=Hello ${contractor.name}, I want to discuss a project.`,
-                      "_blank"
-                    );
-                  }}
-                  className="flex-1 bg-green-500 text-white py-3 rounded-xl font-semibold"
-                >
-                  WhatsApp
-                </button>
+  onClick={() => {
+    if (!isValidPhone(labour.phone)) {
+      alert("Invalid phone number");
+      return;
+    }
+
+    const message = `Hello ${labour.name},
+
+I found your profile on BuildSetu and was impressed by your experience in ${labour.category}.
+
+We currently have a requirement for skilled professionals and would like to explore the possibility of working with you.
+
+Could you please share:
+
+• Your availability
+• Expected charges
+• Previous work experience
+• Current work location
+
+We can discuss further details based on your response.
+
+Looking forward to hearing from you.
+
+Thank you.`;
+
+    window.open(
+      `https://wa.me/91${labour.phone}?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  }}
+  className="flex-1 bg-green-500 text-white py-3 rounded-xl font-semibold"
+>
+  WhatsApp
+</button>
 
               </div>
 
