@@ -137,14 +137,14 @@ function ContractorCategory() {
                 {/* WHATSAPP */}
                 <button
   onClick={() => {
-    if (!isValidPhone(labour.phone)) {
+    if (!isValidPhone(contractor.phone)) {
       alert("Invalid phone number");
       return;
     }
 
-    const message = `Hello ${labour.name},
+    const message = `Hello ${contractor.name},
 
-I found your profile on BuildSetu and was impressed by your experience in ${labour.category}.
+I found your profile on BuildSetu and was impressed by your experience in ${contractor.category}.
 
 We currently have a requirement for skilled professionals and would like to explore the possibility of working with you.
 
@@ -162,7 +162,7 @@ Looking forward to hearing from you.
 Thank you.`;
 
     window.open(
-      `https://wa.me/91${labour.phone}?text=${encodeURIComponent(message)}`,
+      `https://wa.me/91${contractor.phone}?text=${encodeURIComponent(message)}`,
       "_blank"
     );
   }}
