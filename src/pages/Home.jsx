@@ -218,31 +218,36 @@ const Home = () => {
 </section>
   
   {/* SUPPLIER OFFERS MARQUEE */}
-<section className="bg-blue-50 py-4 overflow-hidden">
-  <div className="whitespace-nowrap">
-    <div
-      className="inline-block text-lg font-medium text-green-600"
-      style={{
-        animation: "scroll 35s linear infinite",
-      }}
-    >
-      🔥 Cement 10% OFF &nbsp;&nbsp;&nbsp;
-      ⚡ Electrical Items Discount &nbsp;&nbsp;&nbsp;
-      🧱 Tiles Special Offer &nbsp;&nbsp;&nbsp;
-      🧹 Cleaning Supplies Deal &nbsp;&nbsp;&nbsp;
-      🚰 Plumbing Materials Sale &nbsp;&nbsp;&nbsp;
-      🪵 Wood & Plywood Offer
+<section className="bg-gray-800 py-6 rounded-md">
+  <div className="overflow-x-auto">
+    <div className="flex gap-4 px-4 w-max">
+      
+      <div className="bg-white shadow-md rounded-xl px-6 py-4 min-w-50 hover:scale-105 transition">
+        🔥 Cement 10% OFF
+      </div>
+
+      <div className="bg-white shadow-md rounded-xl px-6 py-4 min-w-55 hover:scale-105 transition">
+        ⚡ Electrical Items Discount
+      </div>
+
+      <div className="bg-white shadow-md rounded-xl px-6 py-4 min-w-50 hover:scale-105 transition">
+        🧱 Tiles Special Offer
+      </div>
+
+      <div className="bg-white shadow-md rounded-xl px-6 py-4 min-w-55 hover:scale-105 transition">
+        🧹 Cleaning Supplies Deal
+      </div>
+
+      <div className="bg-white shadow-md rounded-xl px-6 py-4 min-w-50 hover:scale-105 transition">
+        🚰 Plumbing Materials Sale
+      </div>
+
+      <div className="bg-white shadow-md rounded-xl px-6 py-4 min-w-50 hover:scale-105 transition">
+        🪵 Wood & Plywood Offer
+      </div>
+
     </div>
   </div>
-
-  <style>
-    {`
-      @keyframes scroll {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-      }
-    `}
-  </style>
 </section>
     </div>
     
