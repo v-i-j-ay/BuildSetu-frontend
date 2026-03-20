@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function LabourCategory() {
-
   const { category } = useParams();
   const navigate = useNavigate();
 
@@ -11,7 +10,6 @@ function LabourCategory() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
     setLoading(true);
 
     axios
@@ -24,20 +22,15 @@ function LabourCategory() {
         console.log(err);
         setLoading(false);
       });
-
   }, [category]);
-
 
   // PHONE VALIDATION FUNCTION
   const isValidPhone = (phone) => {
     return /^[0-9]{10}$/.test(phone);
   };
 
-
   return (
-
     <div className="min-h-screen bg-gray-100 p-6">
-
       <button
         onClick={() => navigate("/labours")}
         className="mb-6 px-6 py-2 bg-gray-800 text-white rounded-lg"
@@ -62,18 +55,13 @@ function LabourCategory() {
       )}
 
       {!loading && labours.length > 0 && (
-
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
           {labours.map((labour) => (
-
             <div
               key={labour._id}
               className="bg-white border-2 rounded-3xl shadow-md hover:shadow-xl transition p-8"
             >
-
               <div className="flex items-center gap-4">
-
                 <img
                   src={
                     labour.profile
@@ -85,7 +73,6 @@ function LabourCategory() {
                 />
 
                 <div>
-
                   <h3 className="text-xl font-bold">{labour.name}</h3>
 
                   <p className="text-indigo-600 font-medium">
@@ -95,31 +82,24 @@ function LabourCategory() {
                   <p className="text-yellow-500 text-sm">
                     ⭐ {labour.rating || "4.5"} Rating
                   </p>
-
                 </div>
-
               </div>
 
               <div className="mt-4 text-gray-600 space-y-1">
-
                 <p>📍 {labour.location || "Local Area"}</p>
 
                 <p>📞 {labour.phone}</p>
 
                 <p>⏳ {labour.experience} years experience</p>
-
               </div>
 
               <div className="mt-3">
-
                 <span className="bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full">
                   🟢 Available
                 </span>
-
               </div>
 
               <div className="flex gap-3 mt-6">
-
                 {/* CALL BUTTON */}
 
                 <button
@@ -144,29 +124,38 @@ function LabourCategory() {
                       return;
                     }
                     window.open(
-                      `https://wa.me/91${labour.phone}?text=Hello ${labour.name}, I want to hire you.`,
-                      "_blank"
+                      `https://wa.me/91${labour.phone}?text=Hello ${labour.name},
+
+I found your profile on BuildSetu and was impressed by your experience in ${labour.category}.
+
+We currently have a requirement for skilled professionals and would like to explore the possibility of working with you.
+
+Could you please share:
+
+• Your availability
+• Expected charges
+• Previous work experience
+• Current work location
+
+We can discuss further details based on your response.
+
+Looking forward to hearing from you.
+
+Thank you.`,
+                      "_blank",
                     );
                   }}
                   className="flex-1 bg-green-500 text-white py-3 rounded-xl font-semibold"
                 >
                   WhatsApp
                 </button>
-
               </div>
-
             </div>
-
           ))}
-
         </div>
-
       )}
-
     </div>
-
   );
 }
 
 export default LabourCategory;
-
