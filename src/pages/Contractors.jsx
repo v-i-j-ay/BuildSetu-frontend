@@ -6,13 +6,13 @@ import ContractorRegister from "./ContractorRegister";
 const constructionContractors = [
   { name: "Building Contractor", icon: "🏗️", color: "bg-orange-200" },
   { name: "Civil Engineer", icon: "📐", color: "bg-blue-200" },
-  { name: "Interior Designer", icon: "🛋️", color: "bg-purple-200" },
+  { name: "Interior Designer Contractor", icon: "🛋️", color: "bg-purple-200" },
   { name: "Electrical Contractor", icon: "⚡", color: "bg-green-200" },
   { name: "Plumbing Contractor", icon: "🚰", color: "bg-sky-200" },
 ];
 
 const otherContractors = [
-  { name: "Renovation Specialist", icon: "🏠", color: "bg-red-200" },
+  { name: "Renovation Specialist Contractor", icon: "🏠", color: "bg-red-200" },
   { name: "Road Contractor", icon: "🛣️", color: "bg-gray-200" },
   { name: "Government Contractor", icon: "🏢", color: "bg-indigo-200" },
 ];

@@ -6,10 +6,9 @@ const constructionCategories = [
   "Building Contractor",
   "Electrical Contractor",
   "Plumbing Contractor",
-  "Interior Designer",
+  "Interior Designer Contractor",
   "Road Contractor",
-  "Renovation Specialist",
-  "Civil Engineer"
+  "Renovation Specialist Contractor"
 ];
 
 const ContractorRegister = () => {
