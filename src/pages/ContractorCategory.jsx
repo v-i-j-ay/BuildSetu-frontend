@@ -106,6 +106,7 @@ function ContractorCategory() {
               <div className="mt-4 text-gray-600 space-y-1">
                 <p>📍 {contractor.location || "Local Area"}</p>
                 <p>📞 {contractor.phone}</p>
+                <p>📧 {contractor.email}</p>
                   <p> ⏳{contractor.experience} years experience</p>
               </div>
 

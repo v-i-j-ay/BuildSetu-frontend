@@ -89,6 +89,7 @@ function LabourCategory() {
                 <p>📍 {labour.location || "Local Area"}</p>
 
                 <p>📞 {labour.phone}</p>
+                 <p>📧 {labour.email}</p>
 
                 <p>⏳ {labour.experience} years experience</p>
               </div>
